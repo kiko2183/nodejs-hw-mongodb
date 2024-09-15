@@ -20,9 +20,8 @@ const contactSchema = new Schema({
         enum: ["personal", "home"],
         required: true,
     },
-    favorite: {
-      type: Boolean,
-      default: false,
+    email: {
+      type: String,
     },
 }, {versionKey: false, timestamps: true});
 
