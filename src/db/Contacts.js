@@ -20,14 +20,10 @@ const contactSchema = new Schema({
         enum: ["personal", "home"],
         required: true,
     },
-    createdAt:{
-        type: String,
-        required: true,
+    favorite: {
+      type: Boolean,
+      default: false,
     },
-    updatedAt:{
-        type: String,
-        required: true,
-    }
 }, {versionKey: false, timestamps: true});
 
 const ContactCollection = model("contact", contactSchema);
