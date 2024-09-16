@@ -1,12 +1,8 @@
-import fs from "fs/promises";
-import path from "path";
-
-const contactsFilePath = path.join(process.cwd(), "src/db/contacts.json");
+import ContactCollection from "../db/Contacts.js";
 
 export const getAllContacts = async () => {
   try {
-    const data = await fs.readFile(contactsFilePath, "utf-8");
-    const contacts = JSON.parse(data);
+    const contacts = await ContactCollection.find({});
     return {
       status: 200,
       message: "Successfully found contacts!",
@@ -20,10 +16,8 @@ export const getAllContacts = async () => {
 
 export const getContactById = async (id) => {
   try {
-    const data = await fs.readFile(contactsFilePath, "utf-8");
-    const contacts = JSON.parse(data);
-    const contact = contacts.find(contact => contact.phoneNumber === id);
-
+    const contact = await ContactCollection.findById(id);
+    
     if (!contact) {
       return {
         status: 404,
