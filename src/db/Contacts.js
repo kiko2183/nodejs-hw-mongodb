@@ -20,13 +20,8 @@ const contactSchema = new Schema({
         enum: ["personal", "home"],
         required: true,
     },
-    createdAt:{
+    gmail:{
         type: String,
-        required: true,
-    },
-    updatedAt:{
-        type: String,
-        required: true,
     }
 }, {versionKey: false, timestamps: true});
 
