@@ -2,12 +2,8 @@ import ContactCollection from "../db/Contacts.js";
 
 export const getAllContacts = async () => {
   try {
-    const contacts = await ContactCollection.find({});
-    return {
-      status: 200,
-      message: "Successfully found contacts!",
-      data: contacts,
-    };
+    const contacts = await ContactCollection.find({}).select("-__v"); 
+    return contacts; 
   } catch (error) {
     console.error("Error fetching all contacts:", error.message);
     throw new Error("Could not fetch contacts");
@@ -16,20 +12,13 @@ export const getAllContacts = async () => {
 
 export const getContactById = async (id) => {
   try {
-    const contact = await ContactCollection.findById(id);
+    const contact = await ContactCollection.findById(id).select("-__v");
     
     if (!contact) {
-      return {
-        status: 404,
-        message: `Contact with ID ${id} not found`,
-      };
+      return null; 
     }
 
-    return {
-      status: 200,
-      message: `Successfully found contact with ID ${id}!`,
-      data: contact,
-    };
+    return contact; 
   } catch (error) {
     console.error(`Error fetching contact by ID ${id}:`, error.message);
     throw new Error("Could not fetch contact");
