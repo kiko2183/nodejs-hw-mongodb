@@ -3,7 +3,7 @@ import cors from "cors";
 import { env } from "./utils/env.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 import errorHandler from "./middlewares/errorHandler.js";
-import logger from "./middlewares/loger.js";
+import logger from "./middlewares/logger.js";
 
 import contactsRouter from "./routers/contacts.js";
 
