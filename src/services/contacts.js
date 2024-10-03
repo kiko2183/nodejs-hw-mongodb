@@ -1,5 +1,5 @@
 import ContactCollection from "../db/Contacts.js";
-import { SORT_ORDER } from '../constans/index.js';
+import { SORT_ORDER } from '../constants/index.js';
 import calculatePaginationData from '../utils/calculatePaginationData.js';
 
 export const getAllContacts = async ({ perPage, page, sortBy = 'name', sortOrder = SORT_ORDER[0], filter = {} }) => {
