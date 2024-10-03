@@ -40,6 +40,10 @@ export const getContactByIdController = async (req, res) => {
 };
 
 export const addContactController = async (req, res) => {
+  if (!req.body.email) {
+    throw createHttpError(400, "Email is required");
+  }
+
   try {
     const data = await contactServices.createContact(req.body);
     res.status(201).json({

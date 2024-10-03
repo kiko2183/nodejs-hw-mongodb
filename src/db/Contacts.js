@@ -22,6 +22,7 @@ const contactSchema = new Schema({
     },
     email:{
         type: String,
+        required: true,
     }
 }, {versionKey: false, timestamps: true});
 
