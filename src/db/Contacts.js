@@ -22,12 +22,12 @@ const contactSchema = new Schema({
     },
     email:{
         type: String,
-        required: true,
+        required: false,
     }
 }, {versionKey: false, timestamps: true});
 
 const ContactCollection = model("contact", contactSchema);
 
-export const sortFields = ["name", "phoneNumber", "email", "isFavourite", "contactType"]
+export const sortFields = ["name", "phoneNumber", "email", "isFavourite", "contactType"];
 
 export default ContactCollection;
