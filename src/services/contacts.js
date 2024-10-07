@@ -1,48 +1,59 @@
-import { SORT_ORDER } from '../constants/index.js';
-import ContactCollection from '../db/Contact.js';
+import ContactCollection from "../db/Contacts.js";
+
 import calculatePaginationData from '../utils/calculatePaginationData.js';
+import { SORT_ORDER } from '../constants/index.js';
 
-export const getAllContacts = async ({
+export const getContacts = async ({
     perPage,
-    page,
-    sortBy = "name",
+    page, 
+    sortBy = "_id", 
     sortOrder = SORT_ORDER[0],
-    userId,
-}) => {
+    filter = {},
+})=> {
     const skip = (page - 1) * perPage;
-    const limit = perPage;
-    const contactQuery = ContactCollection.find({userId});
+    const movieQuery = ContactCollection.find(); 
+    
+    if(filter.minReleaseYear) {
+        movieQuery.where("releaseYear").gte(filter.minReleaseYear);
+    }
+    if(filter.maxReleaseYear) {
+        movieQuery.where("releaseYear").lte(filter.maxReleaseYear);
+    }
+    if(filter.userId) {
+        movieQuery.where("userId").eq(filter.userId);
+    }
 
-    const data = await contactQuery.skip(skip).limit(limit).sort({[sortBy] : sortOrder});
-    const count = await ContactCollection.find().merge(contactQuery).countDocuments();
+    const movies = await movieQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
+    
+    const count = await ContactCollection.find().merge(movieQuery).countDocuments();
+
     const paginationData = calculatePaginationData({count, perPage, page});
 
     return {
-        data,
         page,
         perPage,
+        movies,
         totalItems: count,
         ...paginationData,
     };
-}
+};
 
-export const getContact = filter => ContactCollection.findOne(filter);
+export const getContact = filter => ContactCollection.findById(filter);
 
 export const createContact = payload => ContactCollection.create(payload);
 
-export const updateContact = async(filter, data, options = {}) =>{
+export const updateContact = async(filter, data, options = {})=> {
     const rawResult = await ContactCollection.findOneAndUpdate(filter, data, {
-        new: true,
         includeResultMetadata: true,
         ...options,
     });
 
-    if (!rawResult || !rawResult.value) return null;
+    if(!rawResult || !rawResult.value) return null;
+
     return {
         data: rawResult.value,
-        isNew: Boolean(rawResult?.lastErrorObject?.upserted)
+        isNew: Boolean(rawResult?.lastErrorObject?.upserted),
     };
 };
-
 
 export const deleteContact = filter => ContactCollection.findOneAndDelete(filter);
