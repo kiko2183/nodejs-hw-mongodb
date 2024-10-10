@@ -1,14 +1,13 @@
-import {Router} from "express";
+import { Router } from "express";
 import * as authControllers from "../controllers/auth.js";
 import ctrlWrapper from "../utils/ctrlWrapper.js";
 import validateBody from "../utils/validateBody.js";
-import { resetPasswordSchema } from '../validation/users.js';
-import { resetPasswordController } from '../controllers/auth.js';
-import {userSignupSchema, userLoginSchema, requestResetEmailSchema} from "../validation/users.js";
+import { resetPasswordSchema, userRegisterSchema, userLoginSchema, requestResetEmailSchema } from "../validation/users.js";
+import { resetPasswordController } from "../controllers/auth.js";
 
 const authRouter = Router();
 
-authRouter.post("/register", validateBody(userSignupSchema), ctrlWrapper(authControllers.registerController));
+authRouter.post("/register", validateBody(userRegisterSchema), ctrlWrapper(authControllers.registerController));
 authRouter.post("/login", validateBody(userLoginSchema), ctrlWrapper(authControllers.loginController));
 authRouter.post("/refresh", ctrlWrapper(authControllers.refreshController));
 authRouter.post("/logout", ctrlWrapper(authControllers.logoutController));
