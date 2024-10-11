@@ -2,7 +2,7 @@ import createHttpError from 'http-errors';
 import * as contactServices from '../services/contacts.js';
 import parsePaginationParams from '../utils/parsePaginationParams.js';
 import parseSortParams from '../utils/parseSortParams.js';
-import { sortFields } from '../db/models/Contact.js';
+import { sortFields } from '../db/Contacts.js';
 import saveFileToUploadDir from '../utils/saveFileToUploadDir.js';
 import saveFileToCloudinary from "../utils/saveFileToCloudinary.js";
 import { env } from '../utils/env.js';
