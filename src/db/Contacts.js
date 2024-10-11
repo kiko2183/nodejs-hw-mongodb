@@ -33,7 +33,10 @@ const contactSchema = new Schema({
         ref: "user",
         required: true,
     },
-    
+    photo: {
+        type: String,
+        required: false, 
+      }
 
 }, {versionKey: false, timestamps: true});
 
@@ -43,6 +46,6 @@ contactSchema.post("findOneAndUpdate", handleSaveError);
 
 const ContactCollection = model("contact", contactSchema);
 
-export const sortFields = ["name", "phoneNumber", "email", "isFavourite", "contactType"];
+export const sortFields = ["name", "phoneNumber", "email", "isFavourite", "contactType",];
 
 export default ContactCollection;
