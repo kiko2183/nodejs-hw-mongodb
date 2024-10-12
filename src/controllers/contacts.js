@@ -6,6 +6,7 @@ import { sortFields } from '../db/Contacts.js';
 import saveFileToUploadDir from '../utils/saveFileToUploadDir.js';
 import saveFileToCloudinary from "../utils/saveFileToCloudinary.js";
 import { env } from '../utils/env.js';
+import mongoose from 'mongoose';
 
 const enableCloudinary = env("ENABLE_CLOUDINARY");
 
@@ -98,16 +99,18 @@ export const getContactByIdController =  async(req, res) => {
  };
 
 
+export const updateContact = async ({ id, userId }, data, options = {}) => {
+    const updatedContact = await contactServices.findOneAndUpdate(
+        { _id: mongoose.Types.ObjectId(id), userId },
+        data,
+        { new: true, ...options }
+    );
+    return updatedContact ? updatedContact : null;
+};
 
- export const deleteContactController = async(req, res) => {
-    const {id} = req.params;
-    const {_id: userId} = req.user;
-    const data = await contactServices.deleteContact({_id: id, userId});
-
-    if (!data) {
-    throw createHttpError(404, "Contact not found");
-
-    }
-
-    res.status(204).send();
- }
+export const deleteContact = async ({ id, userId }) => {
+    const deletedContact = await contactServices.findOneAndDelete(
+        { _id: mongoose.Types.ObjectId(id), userId }
+    );
+    return deletedContact ? deletedContact : null;
+};

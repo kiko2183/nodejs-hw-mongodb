@@ -1,39 +1,36 @@
 import ContactCollection from "../db/Contacts.js";
 import calculatePaginationData from '../utils/calculatePaginationData.js';
 import { SORT_ORDER } from '../constants/index.js';
-
 export const getContacts = async ({
     perPage,
     page, 
     sortBy = "_id", 
     sortOrder = SORT_ORDER[0],
     filter = {},
-}) => {
+})=> {
     const skip = (page - 1) * perPage;
     const contactQuery = ContactCollection.find(); 
     
-    if (filter.minReleaseYear) {
+    if(filter.minReleaseYear) {
         contactQuery.where("releaseYear").gte(filter.minReleaseYear);
     }
-    if (filter.maxReleaseYear) {
+    if(filter.maxReleaseYear) {
         contactQuery.where("releaseYear").lte(filter.maxReleaseYear);
     }
-    if (filter.userId) {
+    if(filter.userId) {
         contactQuery.where("userId").eq(filter.userId);
     }
 
-    const contacts = await contactQuery
-        .skip(skip)
-        .limit(perPage)
-        .sort({ [sortBy]: sortOrder });
+    const movies = await contactQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
     
-    const count = await contactQuery.clone().countDocuments();
-    const paginationData = calculatePaginationData({ count, perPage, page });
+    const count = await ContactCollection.find().merge(contactQuery).countDocuments();
+
+    const paginationData = calculatePaginationData({count, perPage, page});
 
     return {
         page,
         perPage,
-        contacts,
+        movies,
         totalItems: count,
         ...paginationData,
     };
