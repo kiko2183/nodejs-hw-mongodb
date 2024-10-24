@@ -1,13 +1,14 @@
 const parseInteger = (value, defaultValue) => {
-    if(typeof value !== "string") return defaultValue;
+    console.log(value);
+    if (typeof value !== 'string') return defaultValue;
 
     const parsedValue = parseInt(value);
-    if(Number.isNaN(parsedValue)) return defaultValue;
+    if (Number.isNaN(parsedValue)) return defaultValue;
 
     return parsedValue;
 };
 
-const parsePaginationParams = ({perPage, page})=> {
+    const parsePaginationParams = ({ perPage, page }) => {
     const parsedPerPage = parseInteger(perPage, 10);
     const parsedPage = parseInteger(page, 1);
 
@@ -17,4 +18,4 @@ const parsePaginationParams = ({perPage, page})=> {
     };
 };
 
-export default parsePaginationParams;
+    export default parsePaginationParams;
