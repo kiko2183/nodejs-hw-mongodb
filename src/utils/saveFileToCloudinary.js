@@ -8,18 +8,18 @@ const api_key = env('CLOUDINARY_API_KEY');
 const api_secret = env('CLOUDINARY_API_SECRET');
 
 cloudinary.config({
-    cloud_name,
-    api_key,
-    api_secret,
+  cloud_name,
+  api_key,
+  api_secret,
 });
 
 const saveFileToCloudinary = async (file, folder) => {
-    const response = await cloudinary.uploader.upload(file.path, {
+  const response = await cloudinary.uploader.upload(file.path, {
     folder,
-    });
-    await fs.unlink(file.path);
+  });
+  await fs.unlink(file.path);
 
-    return response.secure_url;
+  return response.secure_url;
 };
 
 export default saveFileToCloudinary;
