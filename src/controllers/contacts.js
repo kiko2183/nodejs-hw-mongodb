@@ -6,7 +6,7 @@ import { parseContactsFilterParams } from '../utils/filters/parseContactsFilterP
 import saveFileToUploadDir from '../utils/saveFileToUploadDir.js';
 import saveFileToCloudinary from '../utils/saveFileToCloudinary.js';
 import { env } from '../utils/env.js';
-import { sortFields } from '../../db/contacts.js';
+import { sortFields } from '../db/contacts.js';
 
 const enableCloudinary = env('ENABLE_CLOUDINARY');
 
