@@ -96,6 +96,7 @@ export const patchContactController = async (req, res) => {
     req.body,
   );
 
+  
   if (!result) {
     throw createHttpError(404, `Contact with id=${id} not found`);
   }
