@@ -1,10 +1,11 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from 'mongoose';
 
-import { emailRegexp } from "../constants/users.js";
+import { emailRegexp } from '../constants/users.js';
 
-import { handleSaveError, setUpdateOptions } from "./hooks.js";
+import { handleSaveError, setUpdateOptions } from './hooks.js';
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+    {
     name: {
         type: String,
         required: true,
@@ -19,27 +20,16 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    // verify: {
-    //     type: Boolean,
-    //     default: false,
-    //     required: true,
-    // }
-    // createdAt:{
-    //     type: String,
-    //     required: true,
-    // },
-    // updatedAt:{
-    //     type: String,
-    //     required: true,
-    // }
-}, {versionKey: false, timestamps: true});
+    },
+    { versionKey: false, timestamps: true },
+);
 
-userSchema.post("save", handleSaveError);
+userSchema.post('save', handleSaveError);
 
-userSchema.pre("findOneAndUpdate", setUpdateOptions);
+userSchema.pre('findOneAndUpdate', setUpdateOptions);
 
-userSchema.post("findOneAndUpdate", handleSaveError);
+userSchema.post('findOneAndUpdate', handleSaveError);
 
-const UserCollection = model("user", userSchema);
+const UserCollection = model('user', userSchema);
 
 export default UserCollection;
