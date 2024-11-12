@@ -1,0 +1,32 @@
+type: object
+required:
+  - _id
+  - name
+  - phoneNumber
+  - email
+  - contactType
+properties:
+  _id:
+    description: "Contact's id"
+    type: string
+    example: 653464sdfsdg343
+  name:
+    description: "Contact's name"
+    type: string
+    example: 'John Doe'
+  phoneNumber:
+    description: "Contact's number"
+    type: string
+    example: '380123456789'
+  email:
+    description: "Contact's email"
+    type: string
+    example: 'john.doe@gmail.com'
+  contactType:
+    description: 'Number type'
+    type: string
+    enum: ['work', 'home', 'personal']
+  photo:
+    description: "Link to contact's photo"
+    type: string
+    example: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOVlw8fe-Hiix_6ktR8FLGtfHnQN7zd5PssI3Qw3Su_J67MHF4Qi3uBkwGBKCs20DDjQ0&usqp=CAU
