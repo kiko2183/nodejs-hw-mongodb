@@ -143,17 +143,17 @@
                   "name": {
                     "type": "string",
                     "description": "Updated contact's name",
-                    "example": "John Doe"
+                    "example": "Bill Bon"
                   },
                   "phoneNumber": {
                     "type": "string",
                     "description": "Updated contact's phone number",
-                    "example": "380123456789"
+                    "example": "380111111111"
                   },
                   "email": {
                     "type": "string",
                     "description": "Updated contact's email",
-                    "example": "john.doe@gmail.com"
+                    "example": "bill.bon@gmail.comm"
                   },
                   "contactType": {
                     "type": "string",
@@ -376,7 +376,7 @@
             "schema": {
               "type": "string"
             },
-            "example": "John",
+            "example": "Bill",
             "description": "Filter contacts by name"
           }
         ],
@@ -482,17 +482,17 @@
                   "name": {
                     "description": "Contact's name",
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Bill Bon"
                   },
                   "phoneNumber": {
                     "description": "Contact's number",
                     "type": "string",
-                    "example": "380123456789"
+                    "example": "380111111111"
                   },
                   "email": {
                     "description": "Contact's email",
                     "type": "string",
-                    "example": "john.doe@gmail.com"
+                    "example": "bill.bon@gmail.com"
                   },
                   "contactType": {
                     "description": "Number type",
@@ -576,17 +576,17 @@
           "name": {
             "description": "Contact's name",
             "type": "string",
-            "example": "John Doe"
+            "example": "Bill Bon"
           },
           "phoneNumber": {
             "description": "Contact's number",
             "type": "string",
-            "example": "380123456789"
+            "example": "380111111111"
           },
           "email": {
             "description": "Contact's email",
             "type": "string",
-            "example": "john.doe@gmail.com"
+            "example": "bill.bon@gmail.com"
           },
           "contactType": {
             "description": "Number type",
@@ -600,7 +600,7 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
-            "example": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOVlw8fe-Hiix_6ktR8FLGtfHnQN7zd5PssI3Qw3Su_J67MHF4Qi3uBkwGBKCs20DDjQ0&usqp=CAU"
+            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
           }
         }
       }

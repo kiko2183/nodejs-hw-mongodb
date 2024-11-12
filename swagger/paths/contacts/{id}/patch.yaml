@@ -21,15 +21,15 @@ requestBody:
           name:
             type: string
             description: "Updated contact's name"
-            example: 'John Doe'
+            example: 'Bill Bon'
           phoneNumber:
             type: string
             description: "Updated contact's phone number"
-            example: '380123456789'
+            example: '380111111111'
           email:
             type: string
             description: "Updated contact's email"
-            example: 'john.doe@gmail.com'
+            example: 'bill.bon@gmail.com'
           contactType:
             type: string
             enum: ['work', 'home', 'personal']
