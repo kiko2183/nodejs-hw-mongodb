@@ -39,6 +39,10 @@ requestBody:
             type: string
             format: binary
             description: "Updated contact's photo"
+          isFavorite:
+            type: boolean
+            description: "Indicates if the contact is marked as a favorite"
+            example: true
 responses:
   '200':
     description: Contact updated successfully

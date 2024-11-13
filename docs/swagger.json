@@ -169,6 +169,11 @@
                     "type": "string",
                     "format": "binary",
                     "description": "Updated contact's photo"
+                  },
+                  "isFavorite": {
+                    "type": "boolean",
+                    "description": "Marks if the contact is a favorite",
+                    "example": true
                   }
                 }
               }
@@ -489,6 +494,11 @@
             "description": "Contact's photo",
             "type": "string",
             "format": "binary"
+          },
+          "isFavorite": {
+            "description": "Marks if the contact is a favorite",
+            "type": "boolean",
+            "example": true
           }
         }
       }
