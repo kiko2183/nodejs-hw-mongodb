@@ -13,7 +13,6 @@ requestBody:
         required:
           - name
           - phoneNumber
-          - email
           - contactType
         properties:
           name:
@@ -36,6 +35,9 @@ requestBody:
             description: "Contact's photo"
             type: string
             format: binary
+          description: "Indicates if the contact is marked as a favorite"
+            type: boolean
+            example: false 
 responses:
   '201':
     description: Creates a contact
