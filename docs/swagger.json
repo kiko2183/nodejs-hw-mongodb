@@ -546,7 +546,8 @@
           "_id",
           "name",
           "phoneNumber",
-          "contactType"
+          "contactType",
+          "isFavourite"
         ],
         "properties": {
           "_id": {
